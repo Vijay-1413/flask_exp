@@ -1,13 +1,17 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route("/dashboard")
-def dashboard():
-    name="Vijay"
-    notification=10
-    mail=8
-    return render_template("dashboard.html",name_temp=name,notification_temp=notification,mail_temp=mail)
+@app.route("/inputpage")
+def inputpage():
+    return render_template("inputpage.html")
+
+
+@app.route("/statuspage")
+def statuspage():
+    status = request.args.get("textinput")
+    return render_template("statuspage.html", status=status)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
