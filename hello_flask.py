@@ -7,7 +7,7 @@ def inputpage():
     return render_template("inputpage.html")
 
 
-@app.route("/statuspage")
+@app.route("/statuspage",methods=["POST"])
 def statuspage():
     status = request.args.get("textinput")
     return render_template("statuspage.html", status=status)
