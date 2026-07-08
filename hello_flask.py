@@ -12,17 +12,17 @@ CREATE TABLE IF NOT EXISTS student(
     age INTEGER
 )
 """)
-conn.commit()
 
+conn.commit()
 @app.route("/input")
-def input():
+def inputpage():
     return render_template("inputpage.html")
 
 @app.route("/save", methods=["POST"])
 def save():
 
-    name = request.form.get("name")
-    age = request.form.get("age")
+    name = request.form["name"]
+    age = request.form["age"]
 
     cursor.execute(
         "INSERT INTO student(name, age) VALUES(?, ?)",
@@ -31,7 +31,18 @@ def save():
 
     conn.commit()
 
-    return "Data Saved Successfully"
+    cursor.execute("SELECT * FROM student")
+    students = cursor.fetchall()
+
+    return render_template("show.html", students=students)
+
+@app.route("/show")
+def show():
+
+    cursor.execute("SELECT * FROM student")
+    students = cursor.fetchall()
+
+    return render_template("show.html", students=students)
 
 if __name__ == "__main__":
     app.run(debug=True)
