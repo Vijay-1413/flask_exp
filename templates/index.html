@@ -1,77 +1,62 @@
 <!DOCTYPE html>
+<html>
 <head>
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial;
-}
+    <title>Age Calculator</title>
 
-body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:lightgray;
-}
+    <script>
+        function calculateAge() {
 
-.login-box{
-    width:350px;
-    border:2px solid black;
-    background:white;
-}
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let mobile = document.getElementById("mobile").value;
+            let dob = document.getElementById("dob").value;
 
-.login-box h2{
-    text-align:center;
-    padding:15px;
-}
+            let birthDate = new Date(dob);
+            let today = new Date();
 
-.login-box hr{
-    border:none;
-    border-top:2px solid black;
-    width:100%;
-    margin:0;
-}
+            let age = today.getFullYear() - birthDate.getFullYear();
 
-.form{
-    padding:20px;
-}
+            let month = today.getMonth() - birthDate.getMonth();
 
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:5px;
-    font-weight:bold;
-}
+            if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
 
-input{
-    width:100%;
-    padding:10px;
-    border:1px solid black;
-}
-</style>
+            document.getElementById("output").innerHTML =
+                "<h3>Details</h3>" +
+                "<table border='1' cellpadding='8'>" +
+                "<tr><th>Name</th><td>" + name + "</td></tr>" +
+                "<tr><th>Email</th><td>" + email + "</td></tr>" +
+                "<tr><th>Mobile</th><td>" + mobile + "</td></tr>" +
+                "<tr><th>Date of Birth</th><td>" + dob + "</td></tr>" +
+                "<tr><th>Age</th><td>" + age + " Years</td></tr>" +
+                "</table>";
+        }
+    </script>
 
 </head>
+
 <body>
 
-<div class="login-box">
-    <h2>Login</h2>
+    <h2>Age Calculator using JavaScript</h2>
 
-    <hr>
+    <label>Name:</label><br>
+    <input type="text" id="name"><br><br>
 
-    <div class="form">
-        <label>Username</label>
-        <input type="text" placeholder="Enter Username">
+    <label>Email:</label><br>
+    <input type="email" id="email"><br><br>
 
-        <label>Password</label>
-        <input type="password" placeholder="Enter Password">
-<br><br><br>
-    </div>
+    <label>Mobile Number:</label><br>
+    <input type="text" id="mobile"><br><br>
 
-    <hr>
-<br><br>
-</div>
+    <label>Date of Birth:</label><br>
+    <input type="date" id="dob"><br><br>
+
+    <button onclick="calculateAge()">Submit</button>
+
+    <br><br>
+
+    <div id="output"></div>
 
 </body>
 </html>

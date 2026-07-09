@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            font-family:Arial;
+            margin:40px;
+        }
+
+        .container{
+            display:flex;
+            gap:50px;
+        }
+
+        .box{
+            width:300px;
+			height:300px;
+            border:2px solid black;
+            padding:30px;
+        }
+
+        input,select{
+            width:100%;
+            padding:8px;
+            margin-bottom:20px;
+        }
+
+        #colorBox{
+            width:100px;
+            height:60px;
+            border:1px solid black;
+            margin-top:20px;
+            margin-bottom:20px;
+        }
+
+    </style>
+
+    <script>
+
+        function updateBox(){
+
+            let fname=document.getElementById("fname").value;
+            let lname=document.getElementById("lname").value;
+            let color=document.getElementById("color").value;
+            let dob=document.getElementById("dob").value;
+			let birthDate = new Date(dob);
+            let today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+
+            document.getElementById("fullname").innerHTML=fname+" "+lname;
+
+            document.getElementById("colorBox").style.backgroundColor=color;
+
+            document.getElementById("showdob").innerHTML="Years : "+age;
+ 
+            
+        }
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <div class="box">
+
+        <label>First Name</label>
+
+        <input type="text" id="fname" oninput="updateBox()">
+
+        <label>Last Name</label>
+
+        <input type="text" id="lname" oninput="updateBox()">
+
+        <label>Colour</label>
+
+        <select id="color" onchange="updateBox()">
+
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="black">Black</option>
+
+        </select>
+
+        <label>Date of Birth</label>
+
+        <input type="date" id="dob" onchange="updateBox()">
+
+    </div>
+
+    <div class="box">
+
+        <h3 id="fullname"></h3>
+
+        <div id="colorBox"></div>
+
+        <p id="showdob"></p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
