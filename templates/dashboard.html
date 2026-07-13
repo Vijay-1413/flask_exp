@@ -1,9 +1,39 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>dashboard</title>
+    <title>Dashboard</title>
 </head>
 <body>
-<h1>Hi,{{name_temp}}</h1>
-<p>You have {{notification_temp}} notifications and {{mail_temp}} mails</p>
+
+<h2>Library Monitoring System</h2>
+
+<a href="/dashboard">Dashboard</a> |
+<a href="/inventory">Inventory</a> |
+<a href="/logout">Logout</a>
+
+<hr>
+
+<h3>Dashboard</h3>
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>Total Books</th>
+    <th>Total Authors</th>
+    <th>Total Genres</th>
+    <th>Active Books</th>
+    <th>Inactive Books</th>
+</tr>
+
+<tr>
+    <td>{{ total_books }}</td>
+    <td>{{ total_authors }}</td>
+    <td>{{ total_genres }}</td>
+    <td>{{ active_books }}</td>
+    <td>{{ inactive_books }}</td>
+</tr>
+
+</table>
+
 </body>
 </html>
