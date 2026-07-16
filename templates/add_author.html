@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Author</title>
+</head>
+<body>
+
+<h2>Add Author</h2>
+
+<a href="{{ url_for('dashboard') }}">Dashboard</a> |
+<a href="{{ url_for('inventory') }}">Inventory</a> |
+<a href="{{ url_for('authors') }}">Author Details</a> |
+<a href="{{ url_for('logout') }}">Logout</a>
+
+<hr>
+
+<form method="POST">
+
+Author Name:<br>
+<input type="text" name="author_name" required>
+
+<br><br>
+
+Age:<br>
+<input type="number" name="age" required>
+
+<br><br>
+
+Address:<br>
+<input type="text" name="address" required>
+
+<br><br>
+
+Author ID:<br>
+<input type="text" name="author_id" required>
+
+<br><br>
+
+<button type="submit">Save</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('authors') }}">Back</a>
+
+</body>
+</html>

@@ -5,18 +5,25 @@
 </head>
 <body>
 
-<h2>Add New Book</h2>
+<h2>Add Book</h2>
 
-<a href="/dashboard">Dashboard</a> |
-<a href="/inventory">Inventory</a> |
-<a href="/logout">Logout</a>
-
-<hr>
-
-<form action="/add" method="POST">
+<form method="POST">
 
 <label>Author Name</label><br>
-<input type="text" name="author" required>
+
+<select name="author_name" required>
+
+<option value="">Select Author</option>
+
+{% for author in authors %}
+
+<option value="{{ author['author'] }}">
+    {{ author['author'] }}
+</option>
+
+{% endfor %}
+
+</select>
 
 <br><br>
 
@@ -36,6 +43,7 @@
 <br><br>
 
 <label>Genre</label><br>
+
 <input type="text" name="genre" required>
 
 <br><br>
@@ -43,21 +51,19 @@
 <label>Status</label><br>
 
 <select name="status">
-    <option value="Active">Active</option>
-    <option value="Inactive">Inactive</option>
+
+<option>Active</option>
+<option>Inactive</option>
+
 </select>
 
 <br><br>
 
-<input type="submit" value="Save Book">
+<input type="submit" value="Save">
+
+<a href="/inventory">Cancel</a>
 
 </form>
-
-<br>
-
-<a href="/inventory">
-    <button>Back</button>
-</a>
 
 </body>
 </html>

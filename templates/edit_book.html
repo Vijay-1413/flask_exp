@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Book</title>
+</head>
+<body>
+
+<h2>Edit Book</h2>
+
+<a href="{{ url_for('dashboard') }}">Dashboard</a> |
+<a href="{{ url_for('inventory') }}">Inventory</a> |
+<a href="{{ url_for('authors') }}">Author Details</a> |
+<a href="{{ url_for('logout') }}">Logout</a>
+
+<hr>
+
+<form method="POST">
+
+    Author Name:<br>
+
+    <select name="author_name">
+
+        {% for author in authors %}
+
+        <option value="{{ author['author'] }}"
+        {% if author['author'] == book['author'] %}selected{% endif %}>
+
+            {{ author['author'] }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    Book Name:<br>
+    <input type="text"
+           name="book_name"
+           value="{{ book['book_name'] }}"
+           required>
+
+    <br><br>
+
+    HSN Code:<br>
+    <input type="text"
+           name="hsn_code"
+           value="{{ book['hsn_code'] }}"
+           required>
+
+    <br><br>
+
+    Book ID:<br>
+    <input type="text"
+           name="book_id"
+           value="{{ book['book_id'] }}"
+           required>
+
+    <br><br>
+
+    Genre:<br>
+    <input type="text"
+           name="genre"
+           value="{{ book['genre'] }}"
+           required>
+
+    <br><br>
+
+    Status:<br>
+    <select name="status">
+        <option value="Active"
+        {% if book['status']=="Active" %}selected{% endif %}>
+        Active
+        </option>
+
+        <option value="Inactive"
+        {% if book['status']=="Inactive" %}selected{% endif %}>
+        Inactive
+        </option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Update</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('inventory') }}">Back to Inventory</a>
+
+</body>
+</html>

@@ -5,48 +5,52 @@
 </head>
 <body>
 
-<h2>Library Inventory</h2>
+<h2>Library Management System</h2>
 
 <a href="/dashboard">Dashboard</a> |
 <a href="/inventory">Inventory</a> |
+<a href="/authors">Author Details</a> |
 <a href="/logout">Logout</a>
 
 <hr>
 
-<a href="/add">
-    <button>Add Book</button>
-</a>
+<h3>Book Inventory</h3>
+
+<a href="/add_book">Add Book</a>
 
 <br><br>
 
 <table border="1" cellpadding="10">
 
 <tr>
-    <th>S.No</th>
     <th>Author Name</th>
     <th>Book Name</th>
     <th>HSN Code</th>
     <th>Book ID</th>
     <th>Genre</th>
     <th>Status</th>
-    <th>Action</th>
+    <th>Edit</th>
+    <th>Delete</th>
 </tr>
 
 {% for book in books %}
 
 <tr>
 
-    <td>{{ loop.index }}</td>
-    <td>{{ book.author }}</td>
-    <td>{{ book.book_name }}</td>
-    <td>{{ book.hsn_code }}</td>
-    <td>{{ book.book_id }}</td>
-    <td>{{ book.genre }}</td>
-    <td>{{ book.status }}</td>
+<td>{{ book["author"] }}</td>
+<td>{{ book["book_name"] }}</td>
+<td>{{ book["hsn_code"] }}</td>
+<td>{{ book["book_id"] }}</td>
+<td>{{ book["genre"] }}</td>
+<td>{{ book["status"] }}</td>
 
-    <td>
-        <a href="/delete/{{ book.id }}">Delete</a>
-    </td>
+<td>
+<a href="/edit_book/{{ book['id'] }}">Edit</a>
+</td>
+
+<td>
+<a href="/delete/{{ book['id'] }}">Delete</a>
+</td>
 
 </tr>
 
